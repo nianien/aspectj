@@ -1,6 +1,7 @@
-package com.scorpio.example;
+package com.scorpio.aspectj.example;
 
 
+import com.scorpio.aspectj.annotations.LogOff;
 import com.scorpio.aspectj.annotations.Loggable;
 
 /**
@@ -10,13 +11,12 @@ import com.scorpio.aspectj.annotations.Loggable;
 @Loggable
 public class HelloWord extends BaseHelloWord {
 
-  @Loggable
   public void sayHello(String msg) {
     super.sayHello(msg);
   }
 
 
-//  @LogOff
+  @LogOff
   public static void main(String[] args) {
     HelloWord he = new HelloWord();
     he.sayHello("lining");

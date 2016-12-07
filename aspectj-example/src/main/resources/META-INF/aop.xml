@@ -4,14 +4,11 @@
 
         <concrete-aspect name="com.scorpio.aspectj.aspects.MyLogAspect"
                          extends="com.scorpio.aspectj.aspects.LogAspect">
-            <pointcut name="scope" expression="within(com.scorpio..*)"/>
+            <pointcut name="scope" expression="within(com.scorpio.aspectj.example..*)"/>
         </concrete-aspect>
         <!-- Of the set of aspects declared to the weaver
              use aspects matching the type pattern "com..*" for weaving. -->
         <include within="com.scorpio.aspectj.aspects..*"/>
-
-        <!-- Of the set of aspects declared to the weaver
-             do not use any aspects with the @CoolAspect annotation for weaving -->
 
     </aspects>
 
@@ -19,9 +16,8 @@
         <!-- Weave types that are within the javax.* or org.aspectj.*
              packages. Also weave all types in the foo package that do
              not have the @NoWeave annotation. -->
-        <include within="(!@*..NoWeave *)"/>
+        <include within="(!@*..NoWeave *) AND within(com.scorpio.aspectj.example..*)"/>
 
-        <!--<exclude within="com.scorpio.aspectj.define*"/>-->
 
     </weaver>
 
