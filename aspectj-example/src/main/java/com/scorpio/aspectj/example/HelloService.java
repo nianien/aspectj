@@ -9,7 +9,7 @@ import com.scorpio.aspectj.annotations.Loggable;
  * @version 1.0.0
  */
 @Loggable
-public class HelloWord extends BaseHelloWord {
+public class HelloService extends BaseHelloService {
 
   public void sayHello(String msg) {
     super.sayHello(msg);
@@ -18,7 +18,7 @@ public class HelloWord extends BaseHelloWord {
 
   @LogOff
   public static void main(String[] args) {
-    HelloWord he = new HelloWord();
+    HelloService he = new HelloService();
     he.sayHello("lining");
   }
 }

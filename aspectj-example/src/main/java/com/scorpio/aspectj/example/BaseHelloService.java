@@ -8,7 +8,7 @@ import com.scorpio.aspectj.annotations.Loggable;
  * @version 1.0.0
  */
 @Loggable
-public class BaseHelloWord {
+public class BaseHelloService {
   public void sayHello() {
     System.out.println("Hello AspectJ.");
   }

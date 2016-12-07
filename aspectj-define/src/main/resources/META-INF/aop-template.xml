@@ -2,24 +2,34 @@
 
     <aspects>
 
+        <!--这里必须是非抽象的aspect，否则不生效-->
+        <!--<aspect name="com.scorpio.aspectj.aspects.BaseLogAspect"></aspect>-->
+
+        <!--必须继承抽象的aspect，否则全部配置失效-->
         <concrete-aspect name="com.scorpio.aspectj.aspects.MyLogAspect"
                          extends="com.scorpio.aspectj.aspects.LogAspect">
-            <pointcut name="scope" expression="within(${package-pattern})"/>
-        </concrete-aspect>
-        <!-- Of the set of aspects declared to the weaver
-             use aspects matching the type pattern "com..*" for weaving. -->
-        <include within="com.scorpio.aspectj.aspects..*"/>
 
+            <!-- 织入定义在package.to.weave包及其子包中的类型，仅对该Aspect生效-->
+            <pointcut name="scope" expression="within(package.to.weave..*)"/>
+        </concrete-aspect>
+
+        <!--这里配置aspect的优先级，也可以在类中定义-->
+        <concrete-aspect name="com.scorpio.aspectj.aspects.__MyDeclarePrecedence"
+                         precedence="*..*Security*, LogAspect+, *"/>
+
+        <!-- 这里只对已经配置的aspects起作用，所以必须先配置aspect -->
+        <!--<include within="com.scorpio.aspectj.aspects..*"/>-->
+        <!--<exclude within="com.scorpio.aspectj.aspects..*"/>-->
 
     </aspects>
 
     <weaver options="-verbose">
-        <!-- Weave types that are within the javax.* or org.aspectj.*
-             packages. Also weave all types in the foo package that do
-             not have the @NoWeave annotation. -->
-        <include within="(!@*..NoWeave *) AND within(${package-pattern})"/>
+        <!-- 织入定义在package.to.weave包及其子包中的类型，且没有声明@NoWeave注解，对所有Aspect生效 -->
+        <include within="(!@*..NoWeave *) AND (package.to.weave..*)"/>
 
-        <exclude within="com.scorpio.aspectj.define*"/>
+        <exclude within="javax.*"/>
+        <exclude within="org.aspectj.*"/>
+
 
     </weaver>
 
