@@ -18,8 +18,8 @@
                          precedence="*..*Security*, LogAspect+, *"/>
 
         <!-- 这里只对已经配置的aspects起作用，所以必须先配置aspect -->
-        <!--<include within="com.scorpio.aspectj.aspects..*"/>-->
-        <!--<exclude within="com.scorpio.aspectj.aspects..*"/>-->
+        <!--<include within="com.scorpio.aspectj.aspects.to.include*"/>-->
+        <!--<exclude within="com.scorpio.aspectj.aspects.to.exclude*"/>-->
 
     </aspects>
 
