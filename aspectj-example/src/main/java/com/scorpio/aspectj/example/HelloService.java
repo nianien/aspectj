@@ -19,6 +19,6 @@ public class HelloService extends BaseHelloService {
   @LogOff
   public static void main(String[] args) {
     HelloService he = new HelloService();
-    he.sayHello("lining");
+    he.sayHello();
   }
 }

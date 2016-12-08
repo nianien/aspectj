@@ -9,13 +9,14 @@ import com.scorpio.aspectj.annotations.Loggable;
  */
 @Loggable
 public class BaseHelloService {
-  public void sayHello() {
-    System.out.println("Hello AspectJ.");
-  }
 
-  public void sayHello(String msg) {
-    System.out.println("Hello " + msg);
-  }
+    public void sayHello() {
+        sayHello("Aspectj");
+    }
+
+    public void sayHello(String msg) {
+        System.out.println("Hello " + msg);
+    }
 
 
 }
