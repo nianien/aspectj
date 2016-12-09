@@ -8,7 +8,7 @@ import org.aspectj.lang.annotation.Pointcut;
  * 拦截{@link org.apache.struts2.dispatcher.ng.filter.StrutsPrepareAndExecuteFilter}及其子类方法
  * @author scorpio
  * @version 1.0.0
- * @email tengzhe.ln@alibaba-inc.com
+ * @email tengzhe.pointcutln@alibaba-inc.com
  */
 @Aspect
 @SuppressWarnings("JavadocReference")

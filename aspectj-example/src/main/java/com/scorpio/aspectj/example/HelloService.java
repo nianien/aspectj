@@ -1,7 +1,6 @@
 package com.scorpio.aspectj.example;
 
 
-import com.scorpio.aspectj.annotations.LogOff;
 import com.scorpio.aspectj.annotations.Loggable;
 
 /**
@@ -16,9 +15,5 @@ public class HelloService extends BaseHelloService {
   }
 
 
-  @LogOff
-  public static void main(String[] args) {
-    HelloService he = new HelloService();
-    he.sayHello();
-  }
+
 }
