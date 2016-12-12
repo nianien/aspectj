@@ -1,43 +1,31 @@
 package com.scorpio.aspectj.aspects;
 
-import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Pointcut;
 
 /**
- * 拦截{@link org.apache.struts2.dispatcher.ng.filter.StrutsPrepareAndExecuteFilter}及其子类方法
+ *Aspect for
+ *
+ *
+ *
+ *
+ *
+ *
+ *
+ * {@link org.apache.struts2.dispatcher.ng.filter.StrutsPrepareAndExecuteFilter#doFilter(javax.servlet.ServletRequest, javax.servlet.ServletResponse, javax.servlet.FilterChain)}
  * @author scorpio
  * @version 1.0.0
  * @email tengzhe.pointcutln@alibaba-inc.com
  */
 @Aspect
 @SuppressWarnings("JavadocReference")
-public abstract class Struts2LogAspect extends BaseAspect {
+public class Struts2LogAspect extends BaseLogAspect {
 
-  public static final String POINTCUT_ON_STRUTS2 = "execution(*(org.apache.struts2.dispatcher.ng.filter.StrutsPrepareAndExecuteFilter+).*(..))";
+  public static final String EXECUTION_FOR_STRUTS2 = "execution(* org.apache.struts2.dispatcher.ng.filter.StrutsPrepareAndExecuteFilter+.doFilter(javax.servlet.ServletRequest,javax.servlet.ServletResponse,javax.servlet.FilterChain))";
 
 
-  @Pointcut(POINTCUT_ON_STRUTS2)
-  final void scope() {
+  @Pointcut(EXECUTION_FOR_STRUTS2)
+  void pointcut() {
   }
 
-  @Pointcut("execution(* *..doFilter(..))")
-  void condition() {
-  }
-
-  /**
-   * @param joinPoint
-   * @return
-   * @throws Throwable
-   */
-  public Object around(ProceedingJoinPoint joinPoint) throws Throwable {
-    System.out.println(">>>struts2 begin:" + joinPoint);
-    try {
-      return joinPoint.proceed();
-    } catch (Throwable e) {
-      throw e;
-    } finally {
-      System.out.println("<<<struts2 end:" + joinPoint);
-    }
-  }
 }

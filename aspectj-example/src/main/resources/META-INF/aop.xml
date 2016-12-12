@@ -1,11 +1,10 @@
 <!DOCTYPE aspectj PUBLIC "-//AspectJ//DTD//EN" "http://www.eclipse.org/aspectj/dtd/aspectj.dtd">
 <aspectj>
 
-    <weaver options="-verbose">
+    <weaver options="-verbose -Xset:weaveJavaxPackages=true">
         <!-- 织入定义在package.to.weave包及其子包中的类型，且没有声明@NoWeave注解，对所有Aspect生效 -->
         <include within="(!@*..NoWeave *)"/>
 
-        <exclude within="javax.*"/>
         <exclude within="org.aspectj.*"/>
 
 
@@ -13,18 +12,15 @@
 
     <aspects>
 
+        <!--<aspect name="com.scorpio.aspectj.aspects.Struts2LogAspect"/>-->
+        <!--<aspect name="com.scorpio.aspectj.aspects.FilterLogAspect"/>-->
+        <!--<aspect name="com.scorpio.aspectj.aspects.ServletLogAspect"/>-->
+        <aspect name="com.scorpio.aspectj.aspects.HttpServletLogAspect"/>
 
-        <concrete-aspect name="com.scorpio.aspectj.aspects.MyLoggableAspect"
-                         extends="com.scorpio.aspectj.aspects.LoggableAspect">
-            <pointcut name="condition" expression="within(com.scorpio.aspectj.example..*)"/>
-        </concrete-aspect>
-
-        <concrete-aspect name="com.scorpio.aspectj.aspects.MyStruts2LogAspect"
-                         extends="com.scorpio.aspectj.aspects.Struts2LogAspect">
-            <!--这里可以重写父类定义的pointcut,如果父类设置了pointcut,则可以不指定expression-->
-            <pointcut name="condition" expression=""/>
-        </concrete-aspect>
-
+        <!--<concrete-aspect name="com.scorpio.aspectj.aspects.MyLoggableAspect"-->
+                         <!--extends="com.scorpio.aspectj.aspects.AnnotationLogAspect">-->
+            <!--<pointcut name="condition" expression="within(com.scorpio.aspectj.example..*)"/>-->
+        <!--</concrete-aspect>-->
 
     </aspects>
 

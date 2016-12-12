@@ -17,7 +17,7 @@
 
         <!--必须继承抽象的aspect，否则不失效-->
         <concrete-aspect name="com.scorpio.aspectj.aspects.MyLogAspect"
-                         extends="com.scorpio.aspectj.aspects.LoggableAspect">
+                         extends="com.scorpio.aspectj.aspects.AnnotationLogAspect">
 
             <!-- 织入定义在package.to.weave包及其子包中的类型，仅对该Aspect生效-->
             <pointcut name="scope" expression="within(package.to.weave..*)"/>
@@ -32,7 +32,7 @@
 
         <!--或者如下配置,不过dtd校验会提示错误-->
         <!--<concrete-aspect name="com.scorpio.aspectj.aspects.__MyDeclarePrecedence"-->
-        <!--precedence="*..*Security*, LoggableAspect+, *"/>-->
+        <!--precedence="*..*Security*, AnnotationLogAspect+, *"/>-->
         <!--</concrete-aspect>-->
 
         <!-- 这里只对已经配置的aspects起作用，所以必须先配置aspect -->
