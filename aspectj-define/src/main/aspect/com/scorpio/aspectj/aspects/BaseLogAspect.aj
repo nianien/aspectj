@@ -1,13 +1,12 @@
 package com.scorpio.aspectj.aspects;
 
 import com.scorpio.aspectj.service.JoinPointHandler;
+import com.scorpio.aspectj.service.JoinPointHandlers;
 
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.Around;
 import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Pointcut;
-
-import java.util.ServiceLoader;
 
 /**
  * 定义切面的基类,子类可以通过{@link #condition()}和 {@link #scope()}组合匹配拦截
@@ -18,14 +17,18 @@ import java.util.ServiceLoader;
 @Aspect
 public abstract class BaseLogAspect {
 
-  public static final String POINTCUT_SKIP = "!within(org.aspectj.*)&&!within(com.scorpio.aspectj.aspects..*)&&!within(*..*$$EnhancerBy*CGLIB$$*)&&!within(com.sun.proxy.$Proxy*)";
-
-  private static final ServiceLoader<JoinPointHandler> serviceLoader = ServiceLoader.load(JoinPointHandler.class);
+  public static final String POINTCUT_TO_SKIP = "!within(org.aspectj.*)&&!within(com.scorpio.aspectj.aspects..*)&&!within(*..*$$EnhancerBy*CGLIB$$*)&&!within(com.sun.proxy.$Proxy*)";
 
   /**
-   * 排除动态代理
+   * 所有的方法执行
    */
-  @Pointcut(POINTCUT_SKIP)
+  public static final String EXECUTION_ALL_METHODS = "execution(* *(..))";
+
+
+  /**
+   * 需要排除的切入点
+   */
+  @Pointcut(POINTCUT_TO_SKIP)
   void skipProxy() {
   }
 
@@ -61,27 +64,11 @@ public abstract class BaseLogAspect {
    */
   @Around("pointcut()")
   public Object around(ProceedingJoinPoint joinPoint) throws Throwable {
-    JoinPointHandler jointHandler = getJointHandler(this.getClass());
+    JoinPointHandler jointHandler = JoinPointHandlers.getJointHandler(this.getClass());
     if (jointHandler != null) {
       return jointHandler.apply(joinPoint);
     }
     return joinPoint.proceed();
-  }
-
-
-  /**
-   * 获取指定服务的实现
-   *
-   * @param serviceClass
-   * @return
-   */
-  private static JoinPointHandler getJointHandler(Class<?> serviceClass) {
-    for (JoinPointHandler joinPointHandler : serviceLoader) {
-      if (joinPointHandler.support(serviceClass)) {
-        return joinPointHandler;
-      }
-    }
-    return null;
   }
 
 }

@@ -1,8 +1,9 @@
 package com.scorpio.aspectj.example;
 
 import com.scorpio.aspectj.annotations.LogOff;
-
-import org.apache.struts2.dispatcher.ng.filter.StrutsPrepareAndExecuteFilter;
+import com.scorpio.aspectj.example.mock.MyHttpServletServlet;
+import com.scorpio.aspectj.example.mock.MyServlet;
+import com.scorpio.aspectj.example.mock.MyStrutsFilter;
 
 import java.io.IOException;
 
@@ -20,15 +21,14 @@ public class MainTest {
 //    he.sayHello();
 
 //    testServlet();
-//    testStruts2();
-    testHttpServlet();
+    testStruts2();
+//    testHttpServlet();
   }
 
 
   public static void testStruts2() {
-    StrutsPrepareAndExecuteFilter filter = new StrutsPrepareAndExecuteFilter();
-    filter.doFilter();
-    filter.doFilter2();
+    MyStrutsFilter filter = new MyStrutsFilter();
+    filter.doFilter(null, null, null);
   }
 
   @LogOff

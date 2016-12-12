@@ -12,10 +12,10 @@
 
     <aspects>
 
-        <!--<aspect name="com.scorpio.aspectj.aspects.Struts2LogAspect"/>-->
-        <!--<aspect name="com.scorpio.aspectj.aspects.FilterLogAspect"/>-->
+        <aspect name="com.scorpio.aspectj.aspects.Struts2LogAspect"/>
+        <aspect name="com.scorpio.aspectj.aspects.FilterLogAspect"/>
         <!--<aspect name="com.scorpio.aspectj.aspects.ServletLogAspect"/>-->
-        <aspect name="com.scorpio.aspectj.aspects.HttpServletLogAspect"/>
+        <!--<aspect name="com.scorpio.aspectj.aspects.HttpServletLogAspect"/>-->
 
         <!--<concrete-aspect name="com.scorpio.aspectj.aspects.MyLoggableAspect"-->
                          <!--extends="com.scorpio.aspectj.aspects.AnnotationLogAspect">-->

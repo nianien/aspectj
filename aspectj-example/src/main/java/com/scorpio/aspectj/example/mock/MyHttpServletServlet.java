@@ -1,4 +1,4 @@
-package com.scorpio.aspectj.example;
+package com.scorpio.aspectj.example.mock;
 
 import java.io.IOException;
 
