@@ -1,7 +1,7 @@
 package com.scorpio.aspectj.example.handler;
 
 import com.scorpio.aspectj.aspects.BaseLogAspect;
-import com.scorpio.aspectj.service.JoinPointHandler;
+import com.scorpio.aspectj.handler.JoinPointHandler;
 
 import org.aspectj.lang.ProceedingJoinPoint;
 

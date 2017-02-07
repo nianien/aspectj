@@ -1,9 +1,9 @@
-package com.scorpio.aspectj.service;
+package com.scorpio.aspectj.handler;
 
 import java.util.ServiceLoader;
 
 /**
- * JoinPoint处理接口定义
+ * 用于获取指定类型对象的{@link JoinPointHandler}对象
  *
  * @author scorpio
  * @version 1.0.0

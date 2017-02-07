@@ -1,7 +1,7 @@
 package com.scorpio.aspectj.aspects;
 
-import com.scorpio.aspectj.service.JoinPointHandler;
-import com.scorpio.aspectj.service.JoinPointHandlers;
+import com.scorpio.aspectj.handler.JoinPointHandler;
+import com.scorpio.aspectj.handler.JoinPointHandlers;
 
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.Around;

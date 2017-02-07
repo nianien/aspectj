@@ -1,4 +1,4 @@
-package com.scorpio.aspectj.service;
+package com.scorpio.aspectj.handler;
 
 import org.aspectj.lang.ProceedingJoinPoint;
 
