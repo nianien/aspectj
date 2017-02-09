@@ -6,3 +6,5 @@
   1)concrete-aspect只能继承抽象类
   2)如果父类设置了pointcut,子类可以重写,也可以不重写
   3)如果父类未指定抽象的pointcut,子类必须重写
+3. jvm启动参数
+ -javaagent:/Users/scorpio/aspectj1.8/lib/aspectjweaver.jar -debug -Daj.weaving.verbose=true
