@@ -1,3 +1,4 @@
+#该文件名必须是接口完整名称
 #按指定顺序加载,支持子类型的接口需排在支持父类型的前面
 com.scorpio.aspectj.example.handler.Struts2JointPointHandler
 com.scorpio.aspectj.example.handler.DemoJointPointHandler
